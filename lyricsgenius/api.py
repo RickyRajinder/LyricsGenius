@@ -235,8 +235,8 @@ class Genius(API):
         :param get_full_song_info: Get full info for each song (slower)
         """
 
-        if self.verbose:
-            print('Searching for songs by {0}...\n'.format(artist_name))
+        #if self.verbose:
+         #   print('Searching for songs by {0}...\n'.format(artist_name))
 
         # Perform a Genius API search for the artist
         json_search = self.search_genius(artist_name)
@@ -301,8 +301,8 @@ class Genius(API):
                         # Add song to the Artist object
                         if artist.add_song(song, verbose=False) == 0:
                             n += 1
-                            if self.verbose:
-                                print('Song {0}: "{1}"'.format(n, song.title))
+                           # if self.verbose:
+                            #    print('Song {0}: "{1}"'.format(n, song.title))
 
                     else:  # Song does not contain lyrics
                         if self.verbose:
@@ -312,8 +312,8 @@ class Genius(API):
                     if not isinstance(max_songs, type(None)):
                         if artist.num_songs >= max_songs:
                             keep_searching = False
-                            if self.verbose:
-                                print('\nReached user-specified song limit ({0}).'.format(max_songs))
+                            #if self.verbose:
+                             #   print('\nReached user-specified song limit ({0}).'.format(max_songs))
                             break
 
                 # Move on to next page of search results
@@ -323,11 +323,11 @@ class Genius(API):
                 else:  # Get next page of artist song results
                     artist_search_results = self.get_artist_songs(artist_id, page=next_page)
 
-            if self.verbose:
-                print('Found {n_songs} songs.'.format(n_songs=artist.num_songs))
+            #if self.verbose:
+             #   print('Found {n_songs} songs.'.format(n_songs=artist.num_songs))
 
-        if self.verbose:
-            print('Done.')
+        #if self.verbose:
+         #   print('Done.')
 
         return artist
 
